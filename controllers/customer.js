@@ -60,8 +60,8 @@ exports.register = asyncHandler(async (req, res, next) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "karundixit5@gmail.com",
-      pass: "dlbf yaqr wkuy afsf" // Replace with your App Password
+      user: "supersashwat@gmail.com",
+      pass: "sxoe avkj rzse lqsn" // Replace with your App Password
     }
   });
 
