@@ -27,11 +27,10 @@ const imageFileFilter = (req, file, cb) => {
   cb(null, true);
 };
 
-// Correctly define the upload middleware
 const uploadProductImage = multer({
   storage: storage,
   fileFilter: imageFileFilter,
   limits: { fileSize: 2 * 1024 * 1024 }, // 2MB max size
-}).single("image"); // Use "image" to match the frontend field name
+}).single("image"); 
 
 module.exports = { uploadProductImage }; // Export as an object
