@@ -47,6 +47,6 @@ exports.authorize = (...roles) => {
         message: `Customer role ${req.customer.role} is not authorized to access this route`,
       });
     }
-    next(); // Proceed if the role is authorized
+    next(); 
   };
 };
