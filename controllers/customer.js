@@ -57,13 +57,13 @@ exports.register = asyncHandler(async (req, res, next) => {
   await newCustomer.save();
 
 
-  // const transporter = nodemailer.createTransport({
-  //   service: "gmail",
-  //   auth: {
-  //     user: "supersashwat@gmail.com",
-  //     pass: "sxoe avkj rzse lqsn" // Replace with your App Password
-  //   }
-  // });
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "supersashwat@gmail.com",
+      pass: "sxoe avkj rzse lqsn" // Replace with your App Password
+    }
+  });
 
   // Email Content
   const mailOptions = {
