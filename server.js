@@ -55,6 +55,7 @@ app.use(express.static(path.join(__dirname, "public"))); // Static files folder
 
 // Mount product routes (updated to handle all product-related actions)
 app.use("/api/products", product); // Handle all routes for products (GET, POST, PUT, DELETE)
+app.use("/api/v1/products", product); // Handle all routes for products (GET, POST, PUT, DELETE)
 
 // Start the server
 const PORT = process.env.PORT || 5000;
@@ -71,5 +72,3 @@ process.on("unhandledRejection", (err, promise) => {
   // Close server & exit process
   server.close(() => process.exit(1));
 });
-
-
