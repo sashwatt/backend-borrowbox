@@ -64,7 +64,7 @@ const getProducts = async (req, res) => {
     // Include the full URL for the image in the response
     const productsWithImageUrls = products.map((product) => ({
       ...product.toObject(),
-      imageUrl: `http://localhost:3001/${product.image}`,  // Correct URL path for image
+      imageUrl: `http://localhost:5000/${product.image}`,  // Correct URL path for image
     }));
 
     res.status(200).json(productsWithImageUrls);  // Return the products with image URLs
@@ -91,7 +91,7 @@ const getProductById = async (req, res) => {
     // Send the product data with image URL
     res.status(200).json({
       ...product.toObject(),
-      imageUrl: `http://localhost:3001/${product.image}`,  // Include full image URL
+      imageUrl: `http://localhost:5000/${product.image}`,  // Include full image URL
     });
   } catch (error) {
     console.error("Error fetching product by ID:", error);
