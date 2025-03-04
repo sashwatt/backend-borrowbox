@@ -21,7 +21,7 @@ exports.getCustomers = asyncHandler(async (req, res, next) => {
 // @route   GET /api/v1/customers/:id
 // @access  Private
 exports.getCustomer = asyncHandler(async (req, res, next) => {
-  const customer = await Customer.findById(req.params.id);
+  const customer = req.customer ?? await Customer.findById(req.params.id);
   if (!customer) {
     return res.status(404).json({
       message: `Customer not found with id of ${req.params.id}`,
@@ -94,7 +94,6 @@ exports.register = asyncHandler(async (req, res, next) => {
 // @access Public
 exports.login = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
-
   if (!email || !password) {
     return res.status(400).json({ message: "Please provide an email and password" });
   }
@@ -105,7 +104,6 @@ exports.login = asyncHandler(async (req, res, next) => {
   if (!customer || !(await customer.matchPassword(password))) {
     return res.status(401).json({ message: "Invalid credentials" });
   }
-
   sendTokenResponse(customer, 200, res);
 });
 
@@ -187,7 +185,6 @@ const sendTokenResponse = (Customer, statusCode, res) => {
   if (process.env.NODE_ENV === "prod") {
     options.secure = true; // Only for https
   }
-
   res
     .status(statusCode)
     .cookie("token", token, options) // Send cookie with the token
