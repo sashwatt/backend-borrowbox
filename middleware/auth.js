@@ -11,6 +11,8 @@ exports.protect = asyncHandler(async (req, res, next) => {
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
   ) {
+    //Bearer asdf
+    // ['Bearer', 'asdf']
     // Extract token from Bearer token in header
     token = req.headers.authorization.split(" ")[1];
   }
